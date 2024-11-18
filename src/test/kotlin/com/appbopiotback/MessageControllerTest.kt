@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test
 import jakarta.ws.rs.core.MediaType
 
 @QuarkusTest
-class ExampleResourceTest {
+class MessageControllerTest {
 
     @Test
-    fun testHelloEndpoint() {
+    fun testSendMessageEndpoint() {
         val requestBody = """
             {
                 "message": "Commande traitée"
