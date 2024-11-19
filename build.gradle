@@ -13,6 +13,7 @@ dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation("io.quarkus:quarkus-rest:3.16.3")
     implementation 'io.quarkus:quarkus-messaging-mqtt'
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json'
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.smallrye.reactive:smallrye-reactive-messaging-provider:4.25.0")
