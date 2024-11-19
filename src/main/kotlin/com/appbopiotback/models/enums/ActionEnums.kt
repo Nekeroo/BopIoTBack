@@ -1,8 +1,10 @@
 package com.appbopiotback.models.enums
 
 import com.appbopiotback.models.Action
+import kotlinx.serialization.Serializable
 import java.util.*
 
+@Serializable
 enum class ActionEnums ( val action : Action) {
 
     PUSH(Action(0, "Appuie !")),
@@ -15,9 +17,9 @@ enum class ActionEnums ( val action : Action) {
     DOWN_JOYSTICK(Action(7, "Tourne le Joystick en Bas !"));
 
     companion object {
-        val randomAction : Action
+        val randomAction : ActionEnums
             get() {
-                return entries[Random().nextInt(8)].action
+                return entries[Random().nextInt(8)]
             }
     }
 

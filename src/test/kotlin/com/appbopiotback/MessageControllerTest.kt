@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.MediaType
 class MessageControllerTest {
 
     @Test
-    fun testSendMessageEndpoint() {
+    fun testSendMessageForActionEndpoint() {
         val requestBody = """
             {
                 "message": "Commande traitée"
