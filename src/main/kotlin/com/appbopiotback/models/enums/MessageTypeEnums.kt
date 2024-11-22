@@ -1,5 +1,8 @@
 package com.appbopiotback.models.enums
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class MessageTypeEnums (val id : Int) {
 
     ERROR(0),
