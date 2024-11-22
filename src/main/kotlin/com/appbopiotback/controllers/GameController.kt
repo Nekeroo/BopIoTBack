@@ -61,12 +61,12 @@ class GameController {
         return Response.status(HttpResponseStatus.INTERNAL_SERVER_ERROR.code()).build()
     }
 
-    @GET
+ /*   @GET
     @Path("/actions")
     fun getActions() : Response {
-        return Response.status(Response.Status.OK).entity(ActionEnums.getActions()).build()
+        return Response.status(Response.Status.OK).entity(ActionEnums).build()
     }
-
+*/
     @POST
     @Path("/start/{gameId}")
     fun gameStart(@RestPath gameId : Long) : Response {
