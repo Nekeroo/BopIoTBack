@@ -21,7 +21,13 @@ enum class ActionEnums ( var action : Action) {
     companion object {
 
         fun getRandomAction(): ActionEnums {
-                return entries[Random().nextInt(8)]
+            val activeActions = entries.filter { it.action.isActivated }
+
+            if (activeActions.isEmpty()) {
+                throw IllegalStateException("No active actions available")
+            }
+
+            return activeActions[Random().nextInt(activeActions.size)]
         }
     }
 
