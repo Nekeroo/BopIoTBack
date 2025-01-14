@@ -5,6 +5,7 @@ import com.appbopiotback.models.Game
 import com.appbopiotback.models.SettingObject
 import com.appbopiotback.models.enums.*
 import com.appbopiotback.models.input.*
+import com.appbopiotback.models.output.GameCreationResponse
 import com.appbopiotback.models.output.GameIdResponse
 import com.appbopiotback.models.saveGameInGames
 import com.appbopiotback.repository.GameRepository
@@ -56,7 +57,7 @@ class GameController {
                     println("Erreur lors de la réception du message : ${e.message}")
                 }
             }
-            return Response.status(HttpResponseStatus.CREATED.code()).entity(GameIdResponse(game.id)).build()
+            return Response.status(HttpResponseStatus.CREATED.code()).entity(GameCreationResponse(game)).build()
         }
         return Response.status(HttpResponseStatus.INTERNAL_SERVER_ERROR.code()).build()
     }
@@ -128,11 +129,11 @@ class GameController {
 
                 if (response != null) {
                     if (gameService.isActionMadeOrNot(response.action, actionAsked, game, elapsedTime)) {
-                        messageController.sendMessage(MqttMessageInfoAction(success = true), game.topic, MqttMessageInfoAction.serializer())
+                        messageController.sendMessage(MqttMessageInfoAction(success = true, lives = game.lives), game.topic, MqttMessageInfoAction.serializer())
                     } else {
                         handleFools(game)
                         if (game.finalStatus == ResultatStatus.DEFEAT.value) break
-                        messageController.sendMessage(MqttMessageInfoAction(success = false), game.topic, MqttMessageInfoAction.serializer())
+                        messageController.sendMessage(MqttMessageInfoAction(success = false, lives = game.lives), game.topic, MqttMessageInfoAction.serializer())
                     }
                 } else {
                     handleFools(game)

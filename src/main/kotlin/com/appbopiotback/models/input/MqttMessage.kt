@@ -18,7 +18,9 @@ data class MqttMessageActionResponse( val type : Int = MessageTypeEnums.RESPONSE
 data class MqttMessageLibelle( val type: Int, val label : String)
 
 @Serializable
-data class MqttMessageInfoAction( val type : Int = MessageTypeEnums.INFO_ACTION.id, val success : Boolean)
+data class MqttMessageInfoAction( val type : Int = MessageTypeEnums.INFO_ACTION.id,
+                                  val success : Boolean,
+                                  val lives : Int)
 
 @Serializable
 data class MqttMessageEndGame( val type : Int = MessageTypeEnums.FINAL.id, val win : Boolean)
