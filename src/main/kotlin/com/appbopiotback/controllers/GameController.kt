@@ -152,7 +152,7 @@ class GameController {
                 } else {
                     handleFools(game)
                     if (game.finalStatus == ResultatStatus.DEFEAT.value) break
-                    messageController.sendMessage(MqttMessageErrorInfo(error = "No response found"), game.topic, MqttMessageErrorInfo.serializer())
+                    messageController.sendMessage(MqttMessageInfoAction(success = false, lives = game.lives), game.topic, MqttMessageInfoAction.serializer())
                 }
             } catch (e: Exception) {
                 messageController.sendMessage(MqttMessageErrorInfo(error = e.message.toString()), game.topic, MqttMessageErrorInfo.serializer())

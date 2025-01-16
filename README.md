@@ -45,7 +45,7 @@ Les fonctionnalités intégrées sont :
 
 ## Stack technique 
 
-* Kotlin (openjdk-22)
+* Kotlin (openjdk-21)
 * Quarkus (3.16.3)
 * Protocole MQTT (org.eclipse.paho.client.mqttv3)
 * Instanciation de BDD Locale (quarkus.datasource) => Not Done
