@@ -74,7 +74,9 @@ class GameController {
     fun gameStart(@RestPath gameId : Long) : Response {
         val game = games.find { it.id == gameId }
         if (game != null && game.actualStatus == GameStatus.PENDING.value){
-            gameLogic(game)
+            Thread {
+                gameLogic(game)
+            }.start()
             return Response.status(Response.Status.OK).entity("Game Started").build()
         }
         else {
