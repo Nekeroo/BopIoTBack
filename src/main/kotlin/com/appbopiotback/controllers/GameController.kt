@@ -98,6 +98,20 @@ class GameController {
     }
 
     @GET
+    @Path("/stop/{gameId}")
+    fun stopCurrentGame(@RestPath gameId: Long) : Response {
+        val game = games.find { it.id == gameId }
+        if (game != null) {
+            game.actualStatus = GameStatus.FINISHED.value
+            game.finalStatus = ResultatStatus.DEFEAT.value
+            games.saveGameInGames(game)
+            messageController.sendMessage(MqttMessageEndGame(win = false), game.topic, MqttMessageEndGame.serializer())
+            return Response.status(Response.Status.OK).entity("Game stopped").build()
+        }
+        return Response.status(Response.Status.NOT_FOUND).entity(gameId).build()
+    }
+
+    @GET
     @Path("/retrieve/{gameId}")
     fun retrieveGameById(@RestPath gameId : Long) : Response {
         //val game = gameRepository.findGameById(gameId)

@@ -7,6 +7,17 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MqttMessageAction( val type : Int = MessageTypeEnums.ACTION.id, val action : Action)
+/*
+{
+   type : 1,
+   action : {
+      id : 1,
+      name : "actionName",
+      description : "actionDescription",
+      status : 1
+   }
+}
+ */
 
 @Serializable
 data class MqttMessageActionForIoT(val type : Int = MessageTypeEnums.ACTION.id)
@@ -22,8 +33,21 @@ data class MqttMessageInfoAction( val type : Int = MessageTypeEnums.INFO_ACTION.
                                   val success : Boolean,
                                   val lives : Int)
 
+/*
+{
+   type : 3,
+   success : true / false,
+   lives : 3
+ */
+
 @Serializable
 data class MqttMessageEndGame( val type : Int = MessageTypeEnums.FINAL.id, val win : Boolean)
+
+/*
+{
+   type : 4,
+   win : true / false
+ */
 
 @Serializable
 data class MqttMessageErrorInfo( val type : Int = MessageTypeEnums.ERROR.id, val error : String)
